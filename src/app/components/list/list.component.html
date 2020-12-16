@@ -1,0 +1,23 @@
+<h3>Showing {{ data.filter }}</h3>
+<div class="item-list"
+     *ngFor="let item of list$ | async">
+  <div class="item">
+    <span>{{item.name}}</span>
+    <mat-divider></mat-divider>
+    <span> {{ item.project || 'No Project' }}</span>
+    <span> {{ (item.dueDate | date:'mediumDate') || 'No Due Date' }}</span>
+    <button mat-button
+            (click)="markIncomplete(item)"
+            *ngIf="item.completed">
+      <mat-icon>radio_button_checked</mat-icon>
+    </button>
+    <button mat-button
+            (click)="markComplete(item)"
+            *ngIf="!item.completed">
+      <mat-icon>radio_button_unchecked</mat-icon>
+    </button>
+  </div>
+</div>
+
+<button mat-button
+        (click)="close()">Close</button>

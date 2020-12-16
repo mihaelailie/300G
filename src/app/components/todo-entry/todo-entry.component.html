@@ -1,0 +1,46 @@
+<form [formGroup]="form">
+  <div class="field-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter Your Task</mat-label>
+      <input matInput
+             formControlName="name"
+             placeholder="Take out the Trash">
+      <mat-hint align="end">
+        <span>This is required</span>
+      </mat-hint>
+    </mat-form-field>
+
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Due Date:</mat-label>
+      <input matInput
+             type="datetime"
+             [matDatepicker]="picker"
+             formControlName="dueDate">
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-datepicker-toggle [for]="picker">
+        <mat-icon matDatepickerToggleIcon>keyboard_down_arrow</mat-icon>
+      </mat-datepicker-toggle>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Project</mat-label>
+      <mat-select formControlName="project">
+        <mat-option></mat-option>
+        <mat-option *ngFor="let project of projects$ | async"
+                    value="{{project.id}}">
+          {{ project.name }}
+        </mat-option>
+
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div>
+    <button mat-button
+            (click)="submit()">Add Item</button>
+    <button mat-button
+            (click)="cancel()">Cancel</button>
+  </div>
+</form>

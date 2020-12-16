@@ -1,0 +1,13 @@
+<mat-card>
+  <mat-card-title>Projects</mat-card-title>
+  <mat-card-content>Todo Items Assigned to a Project</mat-card-content>
+  <mat-card-actions>
+    <button mat-button
+            *ngFor="let item of items">
+      <mat-chip [routerLink]=""
+                [queryParams]="{project: item.id}">
+        <mat-icon>event</mat-icon> {{item.name}} ({{item.count}})
+      </mat-chip>
+    </button>
+  </mat-card-actions>
+</mat-card>

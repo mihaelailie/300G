@@ -1,0 +1,21 @@
+<mat-card>
+  <mat-card-title>Inbox</mat-card-title>
+  <mat-card-content>Inbox items have no project or due-date assigned.</mat-card-content>
+  <mat-card-actions>
+
+    <button mat-button
+            disabled="true"
+            *ngIf="(count$ | async) == 0">
+      <mat-chip>
+        <mat-icon>inbox</mat-icon> ({{count$ | async}})
+      </mat-chip>
+    </button>
+    <button mat-button
+            *ngIf="(count$ | async) > 0">
+      <mat-chip [routerLink]=""
+                [queryParams]="{inbox: true}">
+        <mat-icon>inbox</mat-icon> ({{count$ | async}})
+      </mat-chip>
+    </button>
+  </mat-card-actions>
+</mat-card>

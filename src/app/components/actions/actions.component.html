@@ -1,0 +1,10 @@
+<mat-card>
+  <mat-card-title>Actions</mat-card-title>
+  <mat-card-actions>
+    <button (click)="addItem()"
+            mat-button>Add New Item</button>
+    <button (click)="clearCompleted()"
+            mat-button>Clear All Completed Items (3 complete items)</button>
+    <a [routerLink]="['..','admin', 'on-call']">To To Admin</a>
+  </mat-card-actions>
+</mat-card>
